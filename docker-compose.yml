@@ -1,0 +1,15 @@
+version: '3.6'
+services:
+  boleto:
+    container_name: boleto
+    build:
+      context: .
+      target: development
+    volumes:
+      - .:/usr/app
+      - /usr/app/node_modules
+    ports:
+      - 8080:8080
+    command: npm run start:dev
+    env_file:
+      - .env
