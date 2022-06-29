@@ -1,5 +1,6 @@
 export class BadRequestError extends Error {
-  constructor(message: string) {
-    super(message)
+  constructor(private readonly param: string, private readonly errorMessage: string) {
+    super(errorMessage)
+    this.name = 'BadRequestError'
   }
 }
