@@ -79,7 +79,7 @@ jobs:
         id: task-definition
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: boleto-task.json
+          task-definition: boleto-task/1.json
           container-name: boleto
           image: ${{ steps.image.outputs.url }}
 
