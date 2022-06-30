@@ -27,3 +27,7 @@ jobs:
       - name: Login AWS ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Move environment file
+        run: |
+          mv .env.staging .env
