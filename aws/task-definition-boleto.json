@@ -2,7 +2,7 @@
   "requiresCompatibilities": ["EC2"],
   "containerDefinitions": [
     {
-      "name": "boleto",
+      "name": "boleto-task",
       "essential": true,
       "memoryReservation": "",
       "portMappings": [
@@ -24,7 +24,7 @@
     }
   ],
   "family": "boleto",
-  "networkMode": "awsvpc",
+  "networkMode": null,
   "memory": "128",
   "cpu": null,
   "taskRoleArn": null,
