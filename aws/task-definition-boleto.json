@@ -1,32 +1,81 @@
 {
-  "requiresCompatibilities": ["EC2"],
+  "ipcMode": null,
+  "executionRoleArn": null,
   "containerDefinitions": [
     {
-      "name": "boleto-task",
-      "essential": true,
-      "memoryReservation": "",
+      "dnsSearchDomains": null,
+      "environmentFiles": null,
+      "logConfiguration": null,
+      "entryPoint": null,
       "portMappings": [
         {
+          "hostPort": 0,
           "protocol": "tcp",
           "containerPort": 8080
         }
       ],
-      "logConfiguration": {
-        "logDriver": "awslogs",
-        "options": {
-          "awslogs-group": "/boleto",
-          "awslogs-region": "sa-east-1",
-          "awslogs-stream-prefix": "ecs"
-        }
-      },
+      "command": null,
+      "linuxParameters": null,
       "cpu": 0,
-      "memory": "128"
+      "environment": [],
+      "resourceRequirements": null,
+      "ulimits": null,
+      "dnsServers": null,
+      "mountPoints": [],
+      "workingDirectory": null,
+      "secrets": null,
+      "dockerSecurityOptions": null,
+      "memory": 128,
+      "memoryReservation": null,
+      "volumesFrom": [],
+      "stopTimeout": null,
+      "image": "683214943880.dkr.ecr.sa-east-1.amazonaws.com/boleto:041196d",
+      "startTimeout": null,
+      "firelensConfiguration": null,
+      "dependsOn": null,
+      "disableNetworking": null,
+      "interactive": null,
+      "healthCheck": null,
+      "essential": true,
+      "links": null,
+      "hostname": null,
+      "extraHosts": null,
+      "pseudoTerminal": null,
+      "user": null,
+      "readonlyRootFilesystem": null,
+      "dockerLabels": null,
+      "systemControls": null,
+      "privileged": null,
+      "name": "boleto"
     }
   ],
-  "family": "boleto",
-  "networkMode": null,
-  "memory": "128",
-  "cpu": null,
+  "placementConstraints": [],
+  "memory": null,
   "taskRoleArn": null,
-  "executionRoleArn": null
+  "compatibilities": [
+    "EXTERNAL",
+    "EC2"
+  ],
+  "taskDefinitionArn": "arn:aws:ecs:sa-east-1:683214943880:task-definition/boleto-task:1",
+  "family": "boleto-task",
+  "requiresAttributes": [
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.ecr-auth"
+    }
+  ],
+  "pidMode": null,
+  "requiresCompatibilities": [
+    "EC2"
+  ],
+  "networkMode": null,
+  "runtimePlatform": null,
+  "cpu": null,
+  "revision": 1,
+  "status": "ACTIVE",
+  "inferenceAccelerators": null,
+  "proxyConfiguration": null,
+  "volumes": []
 }
