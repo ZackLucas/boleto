@@ -9,11 +9,10 @@ jobs:
   build:
     name: prod-build
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
-      uses: actions/checkout@v3
+        uses: actions/checkout@v3
       
       - name: Set image tag
-      id: vars
-      run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+        id: vars
+        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
