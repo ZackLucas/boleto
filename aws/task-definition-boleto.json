@@ -1,0 +1,32 @@
+{
+  "requiresCompatibilities": ["EC2"],
+  "containerDefinitions": [
+    {
+      "name": "boleto",
+      "essential": true,
+      "memoryReservation": "",
+      "portMappings": [
+        {
+          "protocol": "tcp",
+          "containerPort": 8080
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/boleto",
+          "awslogs-region": "sa-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "cpu": 0,
+      "memory": "128"
+    }
+  ],
+  "family": "boleto",
+  "networkMode": "awsvpc",
+  "memory": "128",
+  "cpu": null,
+  "taskRoleArn": null,
+  "executionRoleArn": null
+}
