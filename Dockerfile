@@ -12,8 +12,6 @@ COPY . .
 ## Build
 FROM development AS build
 
-RUN npm run migrate:up
-
 RUN npm run build
 
 COPY .env ./dist
