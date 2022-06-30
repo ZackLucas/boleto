@@ -1,15 +1,13 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { BuscarBoleto } from '@/boleto/data';
-// import {} from '@/boleto/infra';
-import { Boleto } from '../domain';
+import { BoletoBancario, BoletoConcessionario } from '../domain';
 
 @Controller('boleto')
 export class BoletoController {
-
-  @Get('/:barCode')
-  async teste(@Param('barCode') codigo: string): Promise<Boleto> {
+  @Get('/:linhaDigitada')
+  async teste(@Param('linhaDigitada') linha: string): Promise<BoletoBancario | BoletoConcessionario> {
     const useCase = new BuscarBoleto();
 
-    return await useCase.execute(codigo);
+    return await useCase.execute(linha);
   }
 }

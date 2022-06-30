@@ -1,18 +1,19 @@
-import { BadRequestError } from '@/core/domain';
-import { Boleto } from '@/boleto/domain';
-import { create } from 'domain';
-import { BoletoRepository } from '../';
+import { InvalidParamError } from '@/core/domain';
+import { BoletoBancario, BoletoConcessionario } from '@/boleto/domain';
 
 export class BuscarBoleto {
   constructor() {}
 
-  async execute(codigo: string): Promise<Boleto> {
-    const replacedBoleto = codigo.replace(/[^a-z0-9]/gi, '')
+  async execute(linha: string): Promise<BoletoBancario | BoletoConcessionario> {
+    const replacedLinha = linha.replace(/[^a-z0-9]/gi, '');
 
-    const boleto = new Boleto(replacedBoleto);
+    const length = replacedLinha.length;
+    if (length < 47 || length > 48) {
+      throw new InvalidParamError('linha digitada', 'Numero de caracteres deve ser 47 ou 48');
+    }
 
-    console.log(boleto)
+    if (length === 47) return new BoletoBancario(replacedLinha);
 
-    return boleto
+    return new BoletoConcessionario(replacedLinha)
   }
 }
