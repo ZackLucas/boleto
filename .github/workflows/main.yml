@@ -7,7 +7,7 @@ name: Pipeline
 
 jobs:
   build:
-    name: build
+    name: prod-build
     runs-on: ubuntu-latest
 
     steps:
