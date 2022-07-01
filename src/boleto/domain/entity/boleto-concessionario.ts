@@ -29,8 +29,8 @@ export class BoletoConcessionario extends Boleto {
 
     const baseDate = new Date('1997/10/01')
 
-    if (isValid(aDate) && aDate > baseDate) return format(aDate, 'dd/MM/yyyy')
-    if (isValid(bDate) && bDate > baseDate) return format(bDate, 'dd/MM/yyyy')
+    if (isValid(aDate) && aDate > baseDate) return format(aDate, 'yyyy-MM-dd')
+    if (isValid(bDate) && bDate > baseDate) return format(bDate, 'yyyy-MM-dd')
 
     return 'não especificado.'
   }
