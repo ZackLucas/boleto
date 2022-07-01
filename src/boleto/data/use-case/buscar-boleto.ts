@@ -3,7 +3,7 @@ import { BoletoBancario, BoletoConcessionario } from '@/boleto/domain'
 
 export class BuscarBoleto {
   async execute(linha: string): Promise<BoletoBancario | BoletoConcessionario> {
-    const replacedLinha = linha.replace(/[^a-z0-9]/gi, '')
+    const replacedLinha = linha.replace(/[^0-9]/gi, '')
 
     const length = replacedLinha.length
     if (length < 47 || length > 48) {

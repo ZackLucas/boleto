@@ -1,24 +1,12 @@
-import { addDays } from 'date-fns'
-
 export class Boleto {
   public linhaDigitavel: string
   public barCode: string
   public amount: number
-  expirationDate: Date
+  expirationDate: string
 
   constructor(linhaDigitavel: string) {
     this.linhaDigitavel = linhaDigitavel
     this.barCode = this.obterCodigoDeBarra()
-    this.expirationDate = this.getDueAt()
-    this.amount = this.getAmount()
-  }
-
-  public getDueAt() {
-    return addDays(new Date('10/07/1997'), Number(this.linhaDigitavel.slice(33, 37)))
-  }
-
-  public getAmount() {
-    return Number(this.linhaDigitavel.slice(37))
   }
 
   public getBarCodeIncompleto() {
@@ -48,7 +36,11 @@ export class Boleto {
       return last + value
     }, 0)
 
-    return 10 - (total % 10)
+    const response = 10 - (total % 10)
+
+    if (response === 10) return 0
+
+    return response
   }
 
   public calculoModulo11() {

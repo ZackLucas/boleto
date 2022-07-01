@@ -1,11 +1,13 @@
+import { addDays, format } from 'date-fns'
+
 import { CodigoInvalidoError } from '../'
 import { Boleto } from './'
 
 export class BoletoBancario extends Boleto {
-  expirationDate: Date
-
   constructor(linhaDigitavel: string) {
     super(linhaDigitavel)
+    this.expirationDate = this.getDueAt()
+    this.amount = this.getAmount()
     this.validator()
   }
 
@@ -15,6 +17,16 @@ export class BoletoBancario extends Boleto {
     }
     this.validarDigitosVerificadores()
     this.validarDigitoVerificadorPrincipal()
+  }
+
+  public getAmount() {
+    return Number(this.linhaDigitavel.slice(37))
+  }
+
+  public getDueAt() {
+    const date = addDays(new Date('10/07/1997'), Number(this.linhaDigitavel.slice(33, 37)))
+
+    return format(date, 'dd/MM/yyyy')
   }
 
   public getBarCodeIncompleto() {
