@@ -27,4 +27,5 @@ RUN npm install --production=true
 
 COPY --from=build /usr/app/dist .
 
+EXPOSE 8080
 CMD ["node", "/usr/app/main"]
