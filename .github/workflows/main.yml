@@ -109,5 +109,5 @@ jobs:
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.task-definition.outputs.task-definition }}
-          cluster: boleto
-          service: boleto_service
+          cluster: blt-cls
+          service: blt_service
