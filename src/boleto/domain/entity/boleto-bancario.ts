@@ -26,7 +26,7 @@ export class BoletoBancario extends Boleto {
   public getDueAt() {
     const date = addDays(new Date('10/07/1997'), Number(this.linhaDigitavel.slice(33, 37)))
 
-    return format(date, 'dd/MM/yyyy')
+    return format(date, 'yyyy-MM-dd')
   }
 
   public getBarCodeIncompleto() {
