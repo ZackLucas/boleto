@@ -37,7 +37,7 @@
       "memoryReservation": null,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "683214943880.dkr.ecr.sa-east-1.amazonaws.com/boleto:410fd87",
+      "image": "683214943880.dkr.ecr.sa-east-1.amazonaws.com/boleto:fccd794",
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
@@ -54,7 +54,7 @@
       "dockerLabels": null,
       "systemControls": null,
       "privileged": null,
-      "name": "blt-ecr-service"
+      "name": "blt-ctn"
     }
   ],
   "placementConstraints": [],
@@ -64,7 +64,7 @@
     "EC2",
     "FARGATE"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:sa-east-1:683214943880:task-definition/blt-td:2",
+  "taskDefinitionArn": "arn:aws:ecs:sa-east-1:683214943880:task-definition/blt-td:5",
   "family": "blt-td",
   "requiresAttributes": [
     {
@@ -117,7 +117,7 @@
   "networkMode": "awsvpc",
   "runtimePlatform": null,
   "cpu": "256",
-  "revision": 2,
+  "revision": 5,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,
