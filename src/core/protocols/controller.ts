@@ -4,6 +4,6 @@ import { Controller, Get } from '@nestjs/common'
 export class AppController {
   @Get()
   initial(): string {
-    return 'Run application'
+    return 'Run application - initial route'
   }
 }
