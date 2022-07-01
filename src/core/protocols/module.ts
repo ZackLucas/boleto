@@ -1,8 +1,8 @@
-import { Module } from '@nestjs/common';
+import { Module } from '@nestjs/common'
 
 import { ModuloBoleto } from '../../boleto/protocols/module'
 
-import { AppController } from './';
+import { AppController } from './'
 
 @Module({
   imports: [ModuloBoleto],
