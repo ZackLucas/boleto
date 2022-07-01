@@ -1,11 +1,33 @@
+name: Pipeline
+
 on:
   push:
     branches:
       - master
-
-name: Pipeline
+  
+  pull_request:
+    branches:
+      - master
 
 jobs:
+  lint:
+    name: code analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup NodeJs
+        uses: actions/setup-node@v1
+        with: 
+          node-version: 16.15.1
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Lint
+        run: npm run lint
+
   build:
     name: prod-build
     runs-on: ubuntu-latest
