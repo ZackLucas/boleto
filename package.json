@@ -31,8 +31,6 @@
     "express": "^4.18.1",
     "helmet": "^5.1.0",
     "jsonwebtoken": "^8.5.1",
-    "mongodb-memory-server": "^8.6.0",
-    "mongoose": "^6.3.5",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
