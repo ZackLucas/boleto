@@ -9,18 +9,18 @@ export class Boleto {
     this.barCode = this.obterCodigoDeBarra()
   }
 
-  public getBarCodeIncompleto() {
+  public obterCodigoDeBarraIncompleto() {
     return ''
   }
 
   public obterCodigoDeBarra() {
-    const incompleto = this.getBarCodeIncompleto()
+    const incompleto = this.obterCodigoDeBarraIncompleto()
     const digitoVerificador = this.calculoModulo11()
 
     return `${incompleto.slice(0, 4)}${digitoVerificador}${incompleto.slice(4)}`
   }
 
-  public normalizeNumber(value: number) {
+  public SomaModule10(value: number) {
     return value
       .toString()
       .split('')
@@ -32,7 +32,7 @@ export class Boleto {
       let value = Number(actual) * multiplicador
       multiplicador = multiplicador === 2 ? 1 : 2
 
-      if (value > 9) value = this.normalizeNumber(value)
+      if (value > 9) value = this.SomaModule10(value)
       return last + value
     }, 0)
 
@@ -44,7 +44,7 @@ export class Boleto {
   }
 
   public calculoModulo11() {
-    const codigoIncompleto = this.getBarCodeIncompleto()
+    const codigoIncompleto = this.obterCodigoDeBarraIncompleto()
 
     let multiplicador = 2
     const total = codigoIncompleto

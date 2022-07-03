@@ -6,12 +6,12 @@ import { Boleto } from './'
 export class BoletoBancario extends Boleto {
   constructor(linhaDigitavel: string) {
     super(linhaDigitavel)
-    this.expirationDate = this.getDueAt()
-    this.amount = this.getAmount()
-    this.validator()
+    this.expirationDate = this.obterDataVencimento()
+    this.amount = this.obterValorNota()
+    this.validador()
   }
 
-  private validator() {
+  private validador() {
     if (this.linhaDigitavel.length !== 47) {
       throw new CodigoInvalidoError('linha digitada', 'A linha digitada deve possuir 47 números')
     }
@@ -19,17 +19,17 @@ export class BoletoBancario extends Boleto {
     this.validarDigitoVerificadorPrincipal()
   }
 
-  public getAmount() {
+  public obterValorNota() {
     return Number(this.linhaDigitavel.slice(37))
   }
 
-  public getDueAt() {
+  public obterDataVencimento() {
     const date = addDays(new Date('10/07/1997'), Number(this.linhaDigitavel.slice(33, 37)))
 
     return format(date, 'yyyy-MM-dd')
   }
 
-  public getBarCodeIncompleto() {
+  public obterCodigoDeBarraIncompleto() {
     return (
       this.linhaDigitavel.slice(0, 3) +
       this.linhaDigitavel[3] +
