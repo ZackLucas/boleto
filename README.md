@@ -24,7 +24,7 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Aplicação utilizada para a busca de dados de um boleto.
 
 ## Installation
 
@@ -45,6 +45,19 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+## Run on Docker
+
+```bash
+# create node_modules
+$ npm install
+
+# build image docker without cache
+$ docker-compose build --no-cache
+
+# run docker boleto-task
+$ docker-compose up
+```
+
 ## Test
 
 ```bash
@@ -53,9 +66,6 @@ $ npm run test
 
 # e2e tests
 $ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
 
 ## Support
