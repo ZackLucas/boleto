@@ -12,9 +12,6 @@ export class BoletoBancario extends Boleto {
   }
 
   private validador() {
-    if (this.linhaDigitavel.length !== 47) {
-      throw new CodigoInvalidoError('linha digitada', 'A linha digitada deve possuir 47 números')
-    }
     this.validarDigitosVerificadores()
     this.validarDigitoVerificadorPrincipal()
   }

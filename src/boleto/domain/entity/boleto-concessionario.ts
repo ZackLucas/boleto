@@ -14,9 +14,6 @@ export class BoletoConcessionario extends Boleto {
   }
 
   private validador() {
-    if (this.linhaDigitavel.length !== 48) {
-      throw new BadRequestError('linha digitada', 'A linha digitada deve possuir 48 números')
-    }
     this.validarDigitosVerificadores()
   }
 
