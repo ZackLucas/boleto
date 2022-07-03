@@ -5,7 +5,7 @@ import { BoletoBancario, BoletoConcessionario } from '../domain'
 @Controller('boleto')
 export class BoletoController {
   @Get('/:linhaDigitada')
-  async teste(@Param('linhaDigitada') linha: string): Promise<BoletoBancario | BoletoConcessionario> {
+  async boleto(@Param('linhaDigitada') linha: string): Promise<BoletoBancario | BoletoConcessionario> {
     const useCase = new BuscarBoleto()
 
     return await useCase.execute(linha)

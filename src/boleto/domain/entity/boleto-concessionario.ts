@@ -1,26 +1,26 @@
 import { format, isValid } from 'date-fns'
 
-import { InvalidParamError } from '@/core/domain'
+import { BadRequestError } from '@/core/domain'
 
 import { Boleto } from './boleto'
 
 export class BoletoConcessionario extends Boleto {
   constructor(linhaDigitavel: string) {
     super(linhaDigitavel)
-    this.barCode = this.getBarCode()
-    this.expirationDate = this.getDueAt()
-    this.amount = this.getAmount()
-    this.validator()
+    this.barCode = this.obterCodigoDeBarra()
+    this.expirationDate = this.obterDataVencimento()
+    this.amount = this.obterValorNota()
+    this.validador()
   }
 
-  private validator() {
+  private validador() {
     if (this.linhaDigitavel.length !== 48) {
-      throw new InvalidParamError('linha digitada', 'A linha digitada deve possuir 48 números')
+      throw new BadRequestError('linha digitada', 'A linha digitada deve possuir 48 números')
     }
     this.validarDigitosVerificadores()
   }
 
-  public getDueAt() {
+  public obterDataVencimento() {
     const a = this.barCode.slice(19, 27)
     const b = this.barCode.slice(23, 31)
 
@@ -35,11 +35,11 @@ export class BoletoConcessionario extends Boleto {
     return 'não especificado.'
   }
 
-  public getAmount() {
+  public obterValorNota() {
     return Number(this.barCode.slice(5, 15))
   }
 
-  public getBarCode() {
+  public obterCodigoDeBarra() {
     return (
       this.linhaDigitavel.slice(0, 11) +
       this.linhaDigitavel.slice(12, 23) +
@@ -55,15 +55,15 @@ export class BoletoConcessionario extends Boleto {
     const quartoDigito = super.calculoModulo10(this.linhaDigitavel.slice(36, 47), 2)
 
     if (primeiroDigito !== Number(this.linhaDigitavel[11]))
-      throw new InvalidParamError('boleto', 'erro no digito verificador 1.')
+      throw new BadRequestError('boleto', 'erro no digito verificador 1.')
 
     if (segundoDigito !== Number(this.linhaDigitavel[23]))
-      throw new InvalidParamError('boleto', 'erro no digito verificador 2.')
+      throw new BadRequestError('boleto', 'erro no digito verificador 2.')
 
     if (terceiroDigito !== Number(this.linhaDigitavel[35]))
-      throw new InvalidParamError('boleto', 'erro no digito verificador 3.')
+      throw new BadRequestError('boleto', 'erro no digito verificador 3.')
 
     if (quartoDigito !== Number(this.linhaDigitavel[47]))
-      throw new InvalidParamError('boleto', 'erro no digito verificador 4.')
+      throw new BadRequestError('boleto', 'erro no digito verificador 4.')
   }
 }
