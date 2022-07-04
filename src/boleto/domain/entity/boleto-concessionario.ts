@@ -8,9 +8,9 @@ export class BoletoConcessionario extends Boleto {
   constructor(linhaDigitavel: string) {
     super(linhaDigitavel)
     this.barCode = this.obterCodigoDeBarra()
+    this.validador()
     this.expirationDate = this.obterDataVencimento()
     this.amount = this.obterValorNota()
-    this.validador()
   }
 
   private validador() {

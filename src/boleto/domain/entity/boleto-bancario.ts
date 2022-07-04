@@ -6,9 +6,9 @@ import { Boleto } from './'
 export class BoletoBancario extends Boleto {
   constructor(linhaDigitavel: string) {
     super(linhaDigitavel)
+    this.validador()
     this.expirationDate = this.obterDataVencimento()
     this.amount = this.obterValorNota()
-    this.validador()
   }
 
   private validador() {
