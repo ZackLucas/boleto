@@ -14,13 +14,13 @@ const makeSut = (): MakeSut => {
 describe('Testes do buscar boleto', () => {
   it('Deve encontrar os dados de um "boleto bancario"', async () => {
     const { sut } = makeSut()
-    const boleto = '21290001192110001210904475617405975870000002000'
+    const boleto = '36490.00019 00004.361804 00001.020676 9 88610000009990'
 
     const { amount, expirationDate, barCode } = await sut.execute(boleto)
 
-    expect(amount).toStrictEqual(2000)
-    expect(expirationDate).toStrictEqual('2018-07-16')
-    expect(barCode).toStrictEqual('21299758700000020000001121100012100447561740')
+    expect(amount).toStrictEqual(9990)
+    expect(expirationDate).toStrictEqual('2022-01-10')
+    expect(barCode).toStrictEqual('36499886100000099900000100004361800000102067')
   })
 
   it('Deve encontrar os dados de um "boleto concessionario"', async () => {
@@ -64,7 +64,7 @@ describe('Testes do buscar boleto', () => {
 
   it('Deve retornar uma exceção em "boleto bancario" - digito verificador principal incorreto', async () => {
     const { sut } = makeSut()
-    const boleto = '21290001192110001210904455617405175870000002000'
+    const boleto = '36490.00035 00004.361804 00001.020668 1 88300000009991'
 
     await expect(sut.execute(boleto)).rejects.toThrow(BadRequestError)
   })
